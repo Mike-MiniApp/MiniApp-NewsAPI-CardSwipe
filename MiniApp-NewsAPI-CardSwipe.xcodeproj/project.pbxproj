@@ -20,6 +20,7 @@
 		9532D88927FD6C0E0064CAC5 /* NewsCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9532D88727FD6C0E0064CAC5 /* NewsCardViewCell.xib */; };
 		9532D88B27FD79ED0064CAC5 /* NewsArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532D88A27FD79ED0064CAC5 /* NewsArticles.swift */; };
 		9532D88D27FD7A830064CAC5 /* CatchNewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532D88C27FD7A830064CAC5 /* CatchNewsData.swift */; };
+		956DED1A27FFB77200BB1837 /* WebNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956DED1927FFB77200BB1837 /* WebNewsViewController.swift */; };
 		A7D75BC7E49329A8BC2B1787 /* Pods_MiniApp_NewsAPI_CardSwipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796CCAD539A79581EB68900F /* Pods_MiniApp_NewsAPI_CardSwipe.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		9532D88727FD6C0E0064CAC5 /* NewsCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCardViewCell.xib; sourceTree = "<group>"; };
 		9532D88A27FD79ED0064CAC5 /* NewsArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticles.swift; sourceTree = "<group>"; };
 		9532D88C27FD7A830064CAC5 /* CatchNewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchNewsData.swift; sourceTree = "<group>"; };
+		956DED1927FFB77200BB1837 /* WebNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNewsViewController.swift; sourceTree = "<group>"; };
 		F4D349CE07E4BF57DF9DAE34 /* Pods-MiniApp-NewsAPI-CardSwipe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniApp-NewsAPI-CardSwipe.debug.xcconfig"; path = "Target Support Files/Pods-MiniApp-NewsAPI-CardSwipe/Pods-MiniApp-NewsAPI-CardSwipe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				9532D86827FD4C120064CAC5 /* AppDelegate.swift */,
 				9532D86A27FD4C120064CAC5 /* SceneDelegate.swift */,
 				9532D86C27FD4C120064CAC5 /* NewsCategoryViewController.swift */,
+				956DED1927FFB77200BB1837 /* WebNewsViewController.swift */,
 				9532D87C27FD4CF70064CAC5 /* CardSwipeViewController.swift */,
 			);
 			path = Controller;
@@ -259,6 +262,7 @@
 				9532D86927FD4C120064CAC5 /* AppDelegate.swift in Sources */,
 				9532D88B27FD79ED0064CAC5 /* NewsArticles.swift in Sources */,
 				9532D87D27FD4CF70064CAC5 /* CardSwipeViewController.swift in Sources */,
+				956DED1A27FFB77200BB1837 /* WebNewsViewController.swift in Sources */,
 				9532D86B27FD4C120064CAC5 /* SceneDelegate.swift in Sources */,
 				9532D88027FD4E700064CAC5 /* NewsCategoryTableViewCell.swift in Sources */,
 			);

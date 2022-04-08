@@ -12,4 +12,5 @@ struct NewsData{
     let publishedAt: String
     let url: String
     let urlToImage: String
+    let description: String
 }

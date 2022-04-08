@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol CatchNewsDataDelegate{
-    func catchNewsData(title: String,url: String,urlToImage: String,publishedAt: String)
+    func catchNewsData(newsDataArray: [NewsData],totalResults: Int)
 }
 
 class CatchNewsData{
@@ -19,7 +19,7 @@ class CatchNewsData{
     func request(searchWord: String){
         let urlString = "https://newsapi.org/v2/top-headlines?country=jp&category=\(searchWord)&apiKey=2dadbe9531074cfe86934358180c7e24"
         //エンコード
-        let encorderUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let encorderUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         // TODO: for文で回して配列に格納するようにする
         // Alamofireによるリクエストを投げて、レスポンスをもらう
@@ -31,13 +31,15 @@ class CatchNewsData{
                     //レスポンスデータをJSON形式として受け取る
                     let json:JSON = try JSON(data: response.data!)
 
-                    if let title = json["articles"][0]["title"].string,let url = json["articles"][0]["url"].string,let urlToImage = json["articles"][0]["urlToImage"].string,let publishedAt = json["articles"][0]["publishedAt"].string{
-                        let titleData = title
-                        let urlData = url
-                        let urlToImageData = urlToImage
-                        let publishedAtData = publishedAt
-                        self.delegate?.catchNewsData(title: titleData, url: urlData, urlToImage: urlToImageData, publishedAt: publishedAtData)
-                        }
+                    let totalResults: Int = json["totalResults"].int ?? 0
+                    self.newsDataArray = []
+                    for i in 0..<totalResults{
+                        if let title = json["articles"][i]["title"].string,let url = json["articles"][i]["url"].string,let urlToImage = json["articles"][i]["urlToImage"].string,let publishedAt = json["articles"][i]["publishedAt"].string,let description = json["articles"][i]["description"].string{
+                            let newsData = NewsData(title: title, publishedAt: publishedAt, url: url, urlToImage: urlToImage,description: description)
+                            self.newsDataArray.append(newsData)
+                            }
+                    }
+                    self.delegate?.catchNewsData(newsDataArray: self.newsDataArray,totalResults: totalResults)
                    }
                 catch{
                     print("取得失敗")

@@ -9,4 +9,5 @@ target 'MiniApp-NewsAPI-CardSwipe' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'VerticalCardSwiper'
+  pod 'SDWebImage'
 end
