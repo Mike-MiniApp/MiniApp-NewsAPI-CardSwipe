@@ -10,12 +10,12 @@ import Alamofire
 import SwiftyJSON
 
 protocol CatchNewsDataDelegate{
-    func catchNewsData(newsDataArray: [NewsData],totalResults: Int)
+    func catchNewsData(newsDataArray: [NewsArticles],totalResults: Int)
 }
 
 class CatchNewsData{
     var delegate: CatchNewsDataDelegate?
-    var newsDataArray = [NewsData]()
+    var newsDataArray = [NewsArticles]()
     func request(searchWord: String){
         let urlString = "https://newsapi.org/v2/top-headlines?country=jp&category=\(searchWord)&apiKey=2dadbe9531074cfe86934358180c7e24"
         //エンコード
@@ -35,7 +35,7 @@ class CatchNewsData{
                     self.newsDataArray = []
                     for i in 0..<totalResults{
                         if let title = json["articles"][i]["title"].string,let url = json["articles"][i]["url"].string,let urlToImage = json["articles"][i]["urlToImage"].string,let publishedAt = json["articles"][i]["publishedAt"].string,let description = json["articles"][i]["description"].string{
-                            let newsData = NewsData(title: title, publishedAt: publishedAt, url: url, urlToImage: urlToImage,description: description)
+                            let newsData = NewsArticles(title: title, publishedAt: publishedAt, url: url, urlToImage: urlToImage,description: description)
                             self.newsDataArray.append(newsData)
                             }
                     }

@@ -8,10 +8,19 @@
 import UIKit
 import WebKit
 class WebNewsViewController: UIViewController {
-    var swipeNewsDataArray: [NewsData] = []
+
+    @IBOutlet weak var webView: WKWebView!
+    var catchSwipeNewsData: NewsArticles = NewsArticles(title: "", publishedAt: "", url: "", urlToImage: "", description: "")
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let newsUrl = URL(string: catchSwipeNewsData.url) else{
+            return
+        }
+        let request = URLRequest(url: newsUrl)
+        webView.load(request)
     }
 
 }

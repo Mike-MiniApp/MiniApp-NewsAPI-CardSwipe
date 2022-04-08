@@ -11,8 +11,9 @@ import SDWebImage
 class CardSwipeViewController: UIViewController{
     // TODO: このあたりの命名はcatchとかでよいのか？
     public var catchNewsCategory: String = ""
-    public var catchNewsDataArray: [NewsData] = []
+    public var catchNewsDataArray: [NewsArticles] = []
     public var catchTotalResult: Int = 0
+    public var swipeNewsData: NewsArticles = NewsArticles(title: "", publishedAt: "", url: "", urlToImage: "", description: "")
     var requestNewsData = CatchNewsData()
     @IBOutlet weak var cardSwiper: VerticalCardSwiper!
 
@@ -30,12 +31,16 @@ class CardSwipeViewController: UIViewController{
         cardSwiper.register(nib: UINib(nibName: "NewsCardViewCell", bundle: nil), forCellWithReuseIdentifier: "newsCardCell")
         cardSwiper.reloadData()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let webNewsViewController = segue.destination as! WebNewsViewController
+        webNewsViewController.catchSwipeNewsData = swipeNewsData
+    }
 
 }
 extension CardSwipeViewController: VerticalCardSwiperDatasource,VerticalCardSwiperDelegate,CatchNewsDataDelegate{
 
     // CatchNewsDataDelegateのデリゲートメソッド
-    func catchNewsData(newsDataArray: [NewsData], totalResults: Int) {
+    func catchNewsData(newsDataArray: [NewsArticles], totalResults: Int) {
         catchNewsDataArray = newsDataArray
         catchTotalResult = totalResults
         cardSwiper.reloadData()
@@ -65,8 +70,8 @@ extension CardSwipeViewController: VerticalCardSwiperDatasource,VerticalCardSwip
     // スワイプしたときに発生するデリゲートメソッド
     func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         if swipeDirection == .Right{
-            // webのURLを渡す
-            // データベースにcount+1を渡す
+            // TODO: データベースにcount+1を渡す
+            swipeNewsData = catchNewsDataArray[index]
             performSegue(withIdentifier: "WebNewsViewControllerSegue", sender: nil)
         }
     }
